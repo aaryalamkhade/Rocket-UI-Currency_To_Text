@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+   <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <style>
+    body
+{
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(to bottom right,rgb(70, 143, 252),rgb(173, 232, 255), rgb(255, 131, 150));
+     background-attachment: fixed;
+    background-size:cover ;
+    font-family: sans-serif;
+    margin: 40px;
+}
+
+  </style>
+  <body>
+   <h1 style="text-align:center ; font-family:Rockwell Condensed;"   >Currency_To_Text_Converter</h1>
+
+  <div class="loginbox">
+  <style>
+    .loginbox
+{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    width:  700px;
+    height: 350px;
+    padding: 80px 40px;
+    box-sizing: border-box;
+    background: rgba(0, 0, 0,0.5);
+}
+.loginbox input[type="submit"]
+{
+    border: none;
+    outline: none;
+    height: 25px;
+    color: #000;
+    font-size: 16px;
+   background:rgb(253, 254, 255)
+}
+.loginbox input[type="radio"]
+{
+    border: none;
+    outline: none;
+    height: 10px;
+      font-size: 20px;
+   background:rgb(253, 254, 255)
+}
+
+
+  </style>
+<form action="/" method="post" accept-charset="utf-8"  style="text-align:center;">
+   <!--<label>Checkbox:
+    <input type="checkbox" name="checkbox" value="on">
+  </label><br /><br />
+<label>Password:
+    <input name="password" type="password" />
+  </label>
+  <br /><br />
+
+  <label for="type">Type:
+    <label for="a">A
+      <input type="radio" name="type" id="a" value="a" />
+    </label>
+    <label for="b">B
+      <input type="radio" name="type" id="b" value="b" checked />
+    </label>
+    <label for="c">C
+      <input type="radio" name="type" id="c" value="c" />
+    </label>
+  </label>
+  <br /><br />
+
+  <label>Textarea:
+    <textarea name="textarea" rows="10" cols="50">Write something here.</textarea>
+  </label>
+  <br /><br />
+
+  <label>Select:
+    <select name="select">
+      <option value="a">Value A</option>
+      <option value="b" selected>Value B</option>
+      <option value="c">Value C</option>
+    </select>
+  </label>
+  <br /><br /> 
+
+
+
+<label for="Language">Choose a Language:</label>
+  <select name="Language" id="Language">
+    <option value="English">English</option>
+    <option value="Marathi">Marathi</option>
+    <option value="Hindi">Hindi</option>
+    <option value="Gujarati">Gujarati</option>
+    <option value="Bengoli">Bengoli</option>
+  </select>
+  <br><br>
+-->
+
+<label style="font-family:Rockwell;">Currency :
+    <input name="Currency"  placeholder="Enter currency" style="font-family:Rockwell ;" step="0.01" min="0" max="10" />
+  </label><br /><br />
+<label for="Language" style="font-family:Rockwell ;">Choose a Language :</label>
+</label><br /><br />
+    <label for="English" style="font-family:Rockwell ;">English
+      <input type="radio"  id="English"  input type="radio" name="Language" value="English" checked/>
+    </label>
+    <label for="मराठी" style="font-family:Rockwell ;">मराठी(Marathi)
+      <input type="radio" name="Language" id="Marathi" value="Marathi"  />
+    </label>
+    <label for="Hindi" style="font-family:Rockwell ;">हिंदी(Hindi)
+      <input type="radio" name="Language" id="Hindi" value="Hindi" />
+    </label>
+    <label for="Gujarati" style="font-family:Rockwell ;">ગુજરાતી(Gujarati)
+      <input type="radio" name="Language" id="Gujarati" value="Gujarati" />
+    </label>
+    <label for="Bengoli" style="font-family:Rockwell ;">বাংলা(Bengali)
+      <input type="radio" name="Language" id="Bengoli" value="Bengoli" />
+    </label>
+  </label>
+  <br /><br />
+
+<label>
+    <input type="submit" onclick="localhost:8000;" value="convert" style="font-family:Rockwell ;">
+  </label>
+  <br /><br />
+</form>
+   </div>
+  </body>
+</html>
+
+
+
+
+
+
+
+
