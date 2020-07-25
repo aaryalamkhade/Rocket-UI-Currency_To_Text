@@ -4,9 +4,16 @@
 #[warn(unused_parens)]
 #[macro_use]
 extern crate rocket;
+#[macro_use]
+extern crate rocket_contrib;
+#[macro_use]
+extern crate serde_derive;
+extern crate serde_json;
 use rocket::http::RawStr;
 use rocket::request::{Form, FormDataError, FormError};
 use rocket::response::NamedFile;
+use rocket::response::Redirect;
+use rocket_contrib::templates::Template;
 mod Bengoli;
 mod English;
 mod Gujarati;
@@ -81,19 +88,25 @@ enum FormOption {
 }
 
 #[derive(Debug, FromForm)]
-
 struct FormInput {
     //float_currency: f64,
     Currency: f64, // #[form(field = "type")]
     //radio: FormOption,
     //password: &'r RawStr,
-    //#[form(field = "textarea")]
+    // #[form(field = "textarea")]
+    //text_area: String,
     //text_area: String,
     Language: FormOption,
 }
-#[warn(bindings_with_variant_name)]
-#[post("/", data = "<Amount>", rank = 2)]
-fn Amount(Amount: Form<FormInput>) -> String {
+#[warn(non_camel_case_types)]
+#[derive(Serialize)]
+struct Templatecontext {
+    name: String,
+    item: String,
+}
+
+#[post("/", data = "<Amount>")]
+fn Amount1(Amount: Form<FormInput>) -> Template {
     let mut Complete_string = String::new();
     let int_currency = Amount.Currency as u32;
     let _diff: f64 = Amount.Currency - f64::from(int_currency);
@@ -119,24 +132,33 @@ fn Amount(Amount: Form<FormInput>) -> String {
             format!("Invalid form input: {}", f)
         }
     }*/
+    let mut output = String::new();
     match Amount.Language {
-        FormOption::English => format!("{}", English::EnglishWords(int_currency, Complete_string)),
-        FormOption::Marathi => format!("{}", Marathi::MarathiWords(int_currency, Complete_string)),
-        FormOption::Hindi => format!("{}", Hindi::HindiWords(int_currency, Complete_string)),
-        FormOption::Gujarati => {
-            format!("{}", Gujarati::GujaratiWords(int_currency, Complete_string))
-        }
-        FormOption::Bengoli => format!("{}", Bengoli::BengoliWords(int_currency, Complete_string)),
+        FormOption::English => output = English::EnglishWords(int_currency, Complete_string),
+        FormOption::Marathi => output = Marathi::MarathiWords(int_currency, Complete_string),
+        FormOption::Hindi => output = Hindi::HindiWords(int_currency, Complete_string),
+        FormOption::Gujarati => output = Gujarati::GujaratiWords(int_currency, Complete_string),
+        FormOption::Bengoli => output = Bengoli::BengoliWords(int_currency, Complete_string),
     }
-    //format!("{}", English::EnglishWords(int_currency, &Complete_string))
+    //return output;
+    // Template::render("index", &output)
+    // format!("{}", output);
+    let mut name_copy = String::new();
+    let Output_String = Templatecontext {
+        name: name_copy,
+        item: output,
+    };
+    Template::render("index", &Output_String)
 }
-#[get("/", rank = 1)]
+#[get("/")]
 fn index() -> Option<NamedFile> {
     NamedFile::open("static/index.html").ok()
 }
 
 fn rocket() -> rocket::Rocket {
-    rocket::ignite().mount("/", routes![index, Amount])
+    rocket::ignite()
+        .mount("/", routes![index, Amount1])
+        .attach(Template::fairing())
 }
 
 fn main() {
