@@ -36,5 +36,8 @@ fn rocket() -> rocket::Rocket {
  Run main.rs using cargo run.  <br>
  Visit http://localhost:8000 to see Rocket application in action!   <br>
  localhost:8000 will trigger the html page which will take amount and langauge as an input and it will give the currency in words.  <br>
- 
+ ![Screenshot (172)](https://user-images.githubusercontent.com/49730497/88544631-53724d80-d037-11ea-909f-e8b3f04be7d5.png)
+![Screenshot (173)](https://user-images.githubusercontent.com/49730497/88544700-69800e00-d037-11ea-98e0-19823df8a57a.png)
+![Screenshot (174)](https://user-images.githubusercontent.com/49730497/88544730-769cfd00-d037-11ea-86fd-9555ce8be591.png)
+
 
