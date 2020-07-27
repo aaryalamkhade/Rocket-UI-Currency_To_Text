@@ -37,7 +37,4 @@ fn rocket() -> rocket::Rocket {
  Visit http://localhost:8000 to see Rocket application in action!   <br>
  localhost:8000 will trigger the html page which will take amount and langauge as an input and it will give the currency in words.  <br>
  
-![Screenshot (170)](https://user-images.githubusercontent.com/49730497/88543937-502a9200-d036-11ea-9bc1-52e88b1afb7c.png)
-![Screenshot (171)](https://user-images.githubusercontent.com/49730497/88544092-7fd99a00-d036-11ea-8106-97cbea887520.png)
-![Screenshot (172)](https://user-images.githubusercontent.com/49730497/88544140-91bb3d00-d036-11ea-9e76-8e96d451ca26.png)
 
