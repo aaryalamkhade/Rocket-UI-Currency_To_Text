@@ -4,7 +4,6 @@ use std::collections::HashMap;
 use std::i32; //library fir i32
 use std::io; //library for standard input output //library   for Hashmap
 
-
 pub fn Hindi(digits: u32) -> String {
     let mut text: HashMap<u32, &str> = HashMap::new();
     text.insert(0, " ");
@@ -124,10 +123,10 @@ pub fn HindiWords(int_currency: u32, mut Complete_string: String) -> String {
         currency_length += 1;
     }
     let mut lengthcopy = currency_length;
-    if currency_length > 9 {
+    if currency_length > 10 {
         string =
-            ["Number should have less than 9 digits before decimal point".to_string()].join(" ");
-             Complete_string=["".to_string()].join("");
+            ["संख्या में अधिकतम 9 अंक होने चाहिए".to_string()].join(" ");
+        Complete_string = ["".to_string()].join("");
     }
     if (int_currency) == 0 {
         string = ["शून्य".to_string()].join("");

@@ -43,7 +43,7 @@ pub fn English(digits: u32) -> String //function which will return a string
     return wordstr; //string return
 }
 
-pub fn EnglishWords(int_currency: u32, mut Complete_string:String) -> String {
+pub fn EnglishWords(int_currency: u32, mut Complete_string: String) -> String {
     let mut string = " ".to_string();
     let mut x = int_currency;
     let mut currency_length = 0;
@@ -54,10 +54,13 @@ pub fn EnglishWords(int_currency: u32, mut Complete_string:String) -> String {
         currency_length += 1;
     }
     let mut lengthcopy = currency_length;
-    if currency_length > 9 {
+    if currency_length > 10 {
         string =
             ["Number should have less than 9 digits before decimal point".to_string()].join(" ");
-            Complete_string=["".to_string()].join("");
+        Complete_string = ["".to_string()].join("");
+    }
+    if (int_currency) == 0 {
+        string = ["Zero".to_string()].join("");
     }
     while currency_length != 0
     //spilts the digits from number

@@ -122,13 +122,12 @@ pub fn BengoliWords(int_currency: u32, mut Complete_string: String) -> String {
         currency_length += 1;
     }
     let mut lengthcopy = currency_length;
-    if currency_length > 9 {
-        string =
-            ["Number should have less than 9 digits before decimal point".to_string()].join(" ");
-             Complete_string=["".to_string()].join("");
+    if currency_length > 10 {
+        string = ["সংখ্যার সর্বাধিক 9 সংখ্যা হওয়া উচিত".to_string()].join(" ");
+        Complete_string = ["".to_string()].join("");
     }
     if (int_currency) == 0 {
-        string = ["શૂન્ય".to_string()].join("");
+        string = ["শূন্য".to_string()].join("");
     }
     while currency_length != 0
     //spilts the digits from number

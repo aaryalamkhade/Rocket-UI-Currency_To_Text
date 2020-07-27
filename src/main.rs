@@ -2,6 +2,7 @@
 #![allow(unused)] //for allowing unused variables or functions
 #![feature(proc_macro_hygiene, decl_macro)]
 #[warn(unused_parens)]
+#[warn(unused_comparisons)]
 #[macro_use]
 extern crate rocket;
 #[macro_use]
@@ -133,13 +134,22 @@ fn Amount1(Amount: Form<FormInput>) -> Template {
         }
     }*/
     let mut output = String::new();
-    match Amount.Language {
-        FormOption::English => output = English::EnglishWords(int_currency, Complete_string),
-        FormOption::Marathi => output = Marathi::MarathiWords(int_currency, Complete_string),
-        FormOption::Hindi => output = Hindi::HindiWords(int_currency, Complete_string),
-        FormOption::Gujarati => output = Gujarati::GujaratiWords(int_currency, Complete_string),
-        FormOption::Bengoli => output = Bengoli::BengoliWords(int_currency, Complete_string),
-    }
+        match Amount.Language {
+            FormOption::English => output = English::EnglishWords(int_currency, Complete_string),
+            FormOption::Marathi => output = Marathi::MarathiWords(int_currency, Complete_string),
+            FormOption::Hindi => output = Hindi::HindiWords(int_currency, Complete_string),
+            FormOption::Gujarati => output = Gujarati::GujaratiWords(int_currency, Complete_string),
+            FormOption::Bengoli => output = Bengoli::BengoliWords(int_currency, Complete_string),
+        }
+   /* else {
+        match Amount.Language {
+            FormOption::English => output = "Invalid Iutput".to_string(),
+            FormOption::Marathi => output = "अवैध इनपुट".to_string(),
+            FormOption::Hindi => output = "अमान्य इनपुट".to_string(),
+            FormOption::Gujarati => output = "ખોટું ઇનપુટ".to_string(),
+            FormOption::Bengoli => output = "অবৈধ ইনপুট".to_string(),
+        }
+    }*/
     //return output;
     // Template::render("index", &output)
     // format!("{}", output);
@@ -152,7 +162,7 @@ fn Amount1(Amount: Form<FormInput>) -> Template {
 }
 #[get("/")]
 fn index() -> Option<NamedFile> {
-    NamedFile::open("static/index.html").ok()
+    NamedFile::open("templates/base.html").ok()
 }
 
 fn rocket() -> rocket::Rocket {
